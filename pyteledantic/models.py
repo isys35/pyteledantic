@@ -43,8 +43,8 @@ class Location(BaseModel):
     proximity_alert_radius: Optional[int] = None
 
     @validator('horizontal_accuracy')
-    def size_horizontal_accuracy_must_contain_a_range(self, value):
-        if value < 0 or value > 1500:
+    def size_horizontal_accuracy_must_contain_a_range(cls, v):
+        if v < 0 or v > 1500:
             raise ValueError('Must contain a range of 0 - 1500')
 
 
@@ -209,8 +209,8 @@ class Poll(BaseModel):
     close_date: Optional[int] = None
 
     @validator('question')
-    def question_characters_limit(self, value):
-        if len(value) > 300:
+    def question_characters_limit(cls, v):
+        if len(v) > 300:
             raise ValueError('question limited 300 characters')
 
 
