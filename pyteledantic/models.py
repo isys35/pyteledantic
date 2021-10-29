@@ -541,7 +541,7 @@ class Message(BaseModel):
     poll: Optional[Poll] = None
     venue: Optional[Venue] = None
     location: Optional[Location] = None
-    new_chat_members: Optional[list, User, None] = None
+    new_chat_members: Union[list, User, None] = None
     left_chat_member: Optional[User] = None
     new_chat_title: Optional[str] = None
     new_chat_photo: Optional[list, PhotoSize, None] = None
