@@ -11,7 +11,7 @@ with open('requirements.txt') as f:
 
 setup(
     name='pyteledantic',
-    version='0.0.10',
+    version='0.0.11',
     description='Pydantic models for Telegram Bot API',
     long_description=long_description,
     long_description_content_type='text/markdown',

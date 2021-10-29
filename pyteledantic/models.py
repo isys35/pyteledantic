@@ -579,8 +579,8 @@ class InlineQuery(BaseModel):
     location: Optional[Location] = None
 
     @validator('query')
-    def query_characters_limit(self, value):
-        if len(value) > 256:
+    def query_characters_limit(cls, v):
+        if len(v) > 256:
             raise ValueError('query limited 256 characters')
 
 
