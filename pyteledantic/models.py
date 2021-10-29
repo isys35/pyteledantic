@@ -544,7 +544,7 @@ class Message(BaseModel):
     new_chat_members: Union[list, User, None] = None
     left_chat_member: Optional[User] = None
     new_chat_title: Optional[str] = None
-    new_chat_photo: Optional[list, PhotoSize, None] = None
+    new_chat_photo: Union[list, PhotoSize, None] = None
     delete_chat_photo: Optional[bool] = None
     group_chat_created: Optional[bool] = None
     supergroup_chat_created: Optional[bool] = None
