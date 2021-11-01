@@ -34,7 +34,8 @@ class ChatPhoto(BaseModel):
 class ChatPermissions(BaseModel):
     """
     https://core.telegram.org/bots/api#chatpermissions
-    Describes actions that a non-administrator user is allowed to take in a chat.
+    Describes actions that a non-administrator user
+    is allowed to take in a chat.
     """
     can_send_messages: Optional[bool] = None
     can_send_media_messages: Optional[bool] = None
@@ -101,7 +102,8 @@ class Chat(BaseModel):
 class MessageEntity(BaseModel):
     """
     https://core.telegram.org/bots/api#messageentity
-    This object represents one special entity in a text message. For example, hashtags, usernames, URLs, etc.
+    This object represents one special entity in a text message.
+     For example, hashtags, usernames, URLs, etc.
     """
     type: str
     offset: int
@@ -126,7 +128,8 @@ class PhotoSize(BaseModel):
 class Animation(BaseModel):
     """
     https://core.telegram.org/bots/api#animation
-    This object represents an animation file (GIF or H.264/MPEG-4 AVC video without sound).
+    This object represents an animation file
+    (GIF or H.264/MPEG-4 AVC video without sound).
     """
     file_id: str
     file_unique_id: str
@@ -142,7 +145,8 @@ class Animation(BaseModel):
 class Audio(BaseModel):
     """
     https://core.telegram.org/bots/api#audio
-    This object represents an audio file to be treated as music by the Telegram clients.
+    This object represents an audio file
+    to be treated as music by the Telegram clients.
     """
     file_id: str
     file_unique_id: str
@@ -158,7 +162,8 @@ class Audio(BaseModel):
 class Document(BaseModel):
     """
     https://core.telegram.org/bots/api#document
-    This object represents a general file (as opposed to photos, voice messages and audio files).
+    This object represents a general file
+    (as opposed to photos, voice messages and audio files).
     """
     file_id: str
     file_unique_id: str
@@ -204,7 +209,8 @@ class Video(BaseModel):
 class VideoNote(BaseModel):
     """
     https://core.telegram.org/bots/api#videonote
-    This object represents a video message (available in Telegram apps as of v.4.0).
+    This object represents a video message
+    (available in Telegram apps as of v.4.0).
     """
     file_id: str
     file_unique_id: str
@@ -250,7 +256,9 @@ class Dice(BaseModel):
 class Game(BaseModel):
     """
     https://core.telegram.org/bots/api#game
-    This object represents a game. Use BotFather to create and edit games, their short names will act as unique identifiers.
+    This object represents a game.
+    Use BotFather to create and edit games,
+    their short names will act as unique identifiers.
     """
     title: str
     description: str
@@ -297,7 +305,8 @@ class Poll(BaseModel):
 class MessageAutoDeleteTimerChanged(BaseModel):
     """
     https://core.telegram.org/bots/api#messageautodeletetimerchanged
-    This object represents a service message about a change in auto-delete timer settings.
+    This object represents a service message
+    about a change in auto-delete timer settings.
     """
     message_auto_delete_time: int
 
@@ -370,7 +379,8 @@ class PassportFile(BaseModel):
     """
     https://core.telegram.org/bots/api#passportfile
     This object represents a file uploaded to Telegram Passport.
-     Currently all Telegram Passport files are in JPEG format when decrypted and don't exceed 10MB.
+     Currently all Telegram Passport files are in JPEG
+     format when decrypted and don't exceed 10MB.
     """
     file_id: str
     file_unique_id: str
@@ -381,7 +391,8 @@ class PassportFile(BaseModel):
 class EncryptedPassportElement(BaseModel):
     """
     https://core.telegram.org/bots/api#encryptedpassportelement
-    Contains information about documents or other Telegram Passport elements shared with the bot by the user.
+    Contains information about documents or
+    other Telegram Passport elements shared with the bot by the user.
     """
     type: str
     data: Optional[str] = None
@@ -398,8 +409,11 @@ class EncryptedPassportElement(BaseModel):
 class EncryptedCredentials(BaseModel):
     """
     https://core.telegram.org/bots/api#encryptedcredentials
-    Contains data required for decrypting and authenticating EncryptedPassportElement.
-    See the Telegram Passport Documentation for a complete description of the data decryption and authentication processes.
+    Contains data required for decrypting
+    and authenticating EncryptedPassportElement.
+    See the Telegram Passport Documentation
+    for a complete description of the data decryption
+    and authentication processes.
     """
     data: str
     hash: str
@@ -409,7 +423,8 @@ class EncryptedCredentials(BaseModel):
 class PassportData(BaseModel):
     """
     https://core.telegram.org/bots/api#passportdata
-    Contains information about Telegram Passport data shared with the bot by the user.
+    Contains information
+    about Telegram Passport data shared with the bot by the user.
     """
     data: Union[list, EncryptedPassportElement]
     credentials: EncryptedCredentials
@@ -418,7 +433,9 @@ class PassportData(BaseModel):
 class ProximityAlertTriggered(BaseModel):
     """
     https://core.telegram.org/bots/api#proximityalerttriggered
-    This object represents the content of a service message, sent whenever a user in the chat triggers a proximity alert set by another user.
+    This object represents the content of a service message,
+    sent whenever a user in the chat triggers a proximity
+    alert set by another user.
     """
     traveler: User
     watcher: User
@@ -429,7 +446,8 @@ class VoiceChatScheduled(BaseModel):
     """
     https://core.telegram.org/bots/api#voicechatscheduled
     This object represents the content of a service message,
-    sent whenever a user in the chat triggers a proximity alert set by another user.
+    sent whenever a user in the chat triggers
+     a proximity alert set by another user.
     """
     start_date: int
 
@@ -437,7 +455,9 @@ class VoiceChatScheduled(BaseModel):
 class VoiceChatStarted(BaseModel):
     """
     https://core.telegram.org/bots/api#voicechatstarted
-    This object represents a service message about a voice chat started in the chat. Currently holds no information.
+    This object represents a service message
+     about a voice chat started in the chat.
+     Currently holds no information.
     """
     pass
 
@@ -445,7 +465,8 @@ class VoiceChatStarted(BaseModel):
 class VoiceChatEnded(BaseModel):
     """
     https://core.telegram.org/bots/api#voicechatended
-    This object represents a service message about a voice chat ended in the chat.
+    This object represents a service message
+    about a voice chat ended in the chat.
     """
     duration: int
 
@@ -453,7 +474,8 @@ class VoiceChatEnded(BaseModel):
 class VoiceChatParticipantsInvited(BaseModel):
     """
     https://core.telegram.org/bots/api#voicechatparticipantsinvited
-    This object represents a service message about new members invited to a voice chat.
+    This object represents a service message
+    about new members invited to a voice chat.
     """
     users: Union[list, User, None] = None
 
@@ -461,9 +483,13 @@ class VoiceChatParticipantsInvited(BaseModel):
 class LoginUrl(BaseModel):
     """
     https://core.telegram.org/bots/api#loginurl
-    This object represents a parameter of the inline keyboard button used to automatically authorize a user.
-    Serves as a great replacement for the Telegram Login Widget when the user is coming from Telegram.
-    All the user needs to do is tap/click a button and confirm that they want to log in.
+    This object represents
+     a parameter of the inline keyboard button
+      used to automatically authorize a user.
+    Serves as a great replacement for the Telegram Login Widget
+    when the user is coming from Telegram.
+    All the user needs to do is tap/click a button
+    and confirm that they want to log in.
     """
     url: str
     forward_text: Optional[str] = None
@@ -474,7 +500,8 @@ class LoginUrl(BaseModel):
 class CallbackGame(BaseModel):
     """
     https://core.telegram.org/bots/api#callbackgame
-    A placeholder, currently holds no information. Use BotFather to set up your game.
+    A placeholder, currently holds no information.
+    Use BotFather to set up your game.
     """
     pass
 
@@ -482,7 +509,8 @@ class CallbackGame(BaseModel):
 class InlineKeyboardButton(BaseModel):
     """
     https://core.telegram.org/bots/api#inlinekeyboardbutton
-    This object represents one button of an inline keyboard. You must use exactly one of the optional fields.
+    This object represents one button of an inline keyboard.
+    You must use exactly one of the optional fields.
     """
     text: str
     url: Optional[str]
@@ -497,7 +525,8 @@ class InlineKeyboardButton(BaseModel):
 class InlineKeyboardMarkup(BaseModel):
     """
     https://core.telegram.org/bots/api#inlinekeyboardmarkup
-    This object represents an inline keyboard that appears right next to the message it belongs to.
+    This object represents an inline keyboard that appears
+    right next to the message it belongs to.
     """
     inline_keyboard: Union[list, List[InlineKeyboardButton]]
 
@@ -549,7 +578,8 @@ class Message(BaseModel):
     group_chat_created: Optional[bool] = None
     supergroup_chat_created: Optional[bool] = None
     channel_chat_created: Optional[bool] = None
-    message_auto_delete_timer_changed: Optional[MessageAutoDeleteTimerChanged] = None
+    message_auto_delete_timer_changed: \
+        Optional[MessageAutoDeleteTimerChanged] = None
     migrate_to_chat_id: Optional[int] = None
     migrate_from_chat_id: Optional[int] = None
     pinned_message: Optional['Message'] = None
@@ -561,7 +591,8 @@ class Message(BaseModel):
     voice_chat_scheduled: Optional[VoiceChatScheduled] = None
     voice_chat_started: Optional[VoiceChatStarted] = None
     voice_chat_ended: Optional[VoiceChatEnded] = None
-    voice_chat_participants_invited: Optional[VoiceChatParticipantsInvited] = None
+    voice_chat_participants_invited: \
+        Optional[VoiceChatParticipantsInvited] = None
     reply_markup: Optional[InlineKeyboardMarkup] = None
 
 
@@ -569,7 +600,8 @@ class InlineQuery(BaseModel):
     """
     https://core.telegram.org/bots/api#inlinequery
     This object represents an incoming inline query.
-     When the user sends an empty query, your bot could return some default or trending results.
+     When the user sends an empty query,
+     your bot could return some default or trending results.
     """
     id: str
     from_user: User = Field(alias='from')
@@ -587,7 +619,8 @@ class InlineQuery(BaseModel):
 class ChosenInlineResult(BaseModel):
     """
     https://core.telegram.org/bots/api#choseninlineresult
-    Represents a result of an inline query that was chosen by the user and sent to their chat partner.
+    Represents a result of an inline query
+    that was chosen by the user and sent to their chat partner.
     """
     result_id: str
     from_user: User = Field(alias='from')
@@ -599,10 +632,16 @@ class ChosenInlineResult(BaseModel):
 class CallbackQuery(BaseModel):
     """
     https://core.telegram.org/bots/api#callbackquery
-    This object represents an incoming callback query from a callback button in an inline keyboard.
-    If the button that originated the query was attached to a message sent by the bot, the field message will be present.
-    If the button was attached to a message sent via the bot (in inline mode), the field inline_message_id will be present.
-    Exactly one of the fields data or game_short_name will be present.
+    This object represents
+     an incoming callback query from a callback button
+      in an inline keyboard.
+    If the button that originated the query was attached
+     to a message sent by the bot, the field message will be present.
+    If the button was attached to a message sent
+     via the bot (in inline mode),
+     the field inline_message_id will be present.
+    Exactly one of the fields data
+    or game_short_name will be present.
     """
     id: str
     from_user: User = Field(alias='from')
@@ -651,7 +690,8 @@ class PollAnswer(BaseModel):
 class ChatMemberOwner(BaseModel):
     """
     https://core.telegram.org/bots/api#chatmemberowner
-    Represents a chat member that owns the chat and has all administrator privileges.
+    Represents a chat member
+     that owns the chat and has all administrator privileges.
     """
     status: str
     user: User
@@ -684,7 +724,8 @@ class ChatMemberAdministrator(BaseModel):
 class ChatMemberMember(BaseModel):
     """
     https://core.telegram.org/bots/api#chatmembermember
-    Represents a chat member that has no additional privileges or restrictions.
+    Represents a chat member that has no additional privileges
+    or restrictions.
     """
     status: str
     user: User
@@ -693,7 +734,8 @@ class ChatMemberMember(BaseModel):
 class ChatMemberRestricted(BaseModel):
     """
     https://core.telegram.org/bots/api#chatmemberrestricted
-    Represents a chat member that is under certain restrictions in the chat. Supergroups only.
+    Represents a chat member that is under
+     certain restrictions in the chat. Supergroups only.
     """
     status: str
     user: User
@@ -712,7 +754,8 @@ class ChatMemberRestricted(BaseModel):
 class ChatMemberLeft(BaseModel):
     """
     https://core.telegram.org/bots/api#chatmemberleft
-    Represents a chat member that isn't currently a member of the chat, but may join it themselves.
+    Represents a chat member that isn't currently a member of the chat,
+     but may join it themselves.
     """
     status: str
     user: User
@@ -721,7 +764,9 @@ class ChatMemberLeft(BaseModel):
 class ChatMemberBanned(BaseModel):
     """
     https://core.telegram.org/bots/api#chatmemberbanned
-    Represents a chat member that was banned in the chat and can't return to the chat or view chat messages.
+    Represents a chat member
+    that was banned in the chat and can't
+    return to the chat or view chat messages.
     """
     status: str
     user: User
@@ -750,11 +795,13 @@ class ChatMemberUpdated(BaseModel):
     from_user: User = Field(alias='from')
     date: datetime
     old_chat_member: Union[
-        ChatMemberOwner, ChatMemberAdministrator, ChatMemberMember, ChatMemberRestricted, ChatMemberLeft,
-        ChatMemberBanned]
+        ChatMemberOwner, ChatMemberAdministrator,
+        ChatMemberMember, ChatMemberRestricted,
+        ChatMemberLeft, ChatMemberBanned]
     new_chat_member: Union[
-        ChatMemberOwner, ChatMemberAdministrator, ChatMemberMember, ChatMemberRestricted, ChatMemberLeft,
-        ChatMemberBanned]
+        ChatMemberOwner, ChatMemberAdministrator,
+        ChatMemberMember, ChatMemberRestricted,
+        ChatMemberLeft, ChatMemberBanned]
     invite_link: ChatInviteLink
 
 
