@@ -28,4 +28,7 @@ jobs:
     - name: Run Tests
       run: |
         pytest tests
+        
+    - name: Run flake8
+      run: |
         flake8 pyteledantic
