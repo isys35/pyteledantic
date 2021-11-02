@@ -5,4 +5,7 @@
 <a href="https://img.shields.io/pypi/dm/pyteledantic">
   <img src="https://img.shields.io/pypi/dm/pyteledantic"/>
 </a>
+<a href="https://img.shields.io/pypi/v/pyteledantic">
+  <img src="https://img.shields.io/pypi/v/pyteledantic"/>
+</a>
 <h1>Pydantic models for Telegram Bot API</h1>
