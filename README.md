@@ -12,3 +12,27 @@
   <img src="https://img.shields.io/github/last-commit/isys35/pyteledantic"/>
 </a>
 <h1>Pydantic models for Telegram Bot API</h1>
+
+
+Install:
+
+```pip install pyteledantic```
+
+
+<h3>How to use</h3>
+
+<h4>FastAPI</h4>
+
+
+````python
+from fastapi import FastAPI
+from pyteledantic.models import Update
+
+
+app = FastAPI()
+
+
+@app.post("/")
+async def root(update: Update):
+    return update
+````
