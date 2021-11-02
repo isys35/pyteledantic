@@ -3,15 +3,20 @@ from os import path
 import setuptools
 from setuptools import setup
 
-with open(path.join(path.abspath(path.dirname(__file__)), 'README.md'), encoding='utf-8') as f:
+BASE_PATH = path.abspath(path.dirname(__file__))
+
+with open(path.join(BASE_PATH, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
+
+with open(path.join(BASE_PATH, 'VERSION')) as f:
+    version = f.read().strip()
 
 with open('requirements.txt') as f:
     required_packages = f.read().splitlines()
 
 setup(
     name='pyteledantic',
-    version='0.0.11',
+    version=version,
     description='Pydantic models for Telegram Bot API',
     long_description=long_description,
     long_description_content_type='text/markdown',
