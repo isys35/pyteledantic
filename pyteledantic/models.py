@@ -825,3 +825,18 @@ At most one of the optional parameters can be present in any given update.
     poll_answer: Optional[PollAnswer] = None
     my_chat_member: Optional[ChatMemberUpdated] = None
     chat_member: Optional[ChatMemberUpdated] = None
+
+
+class WebhookInfo(BaseModel):
+    """
+    Contains information about the current status of a webhook.
+    """
+
+    url: str
+    has_custom_certificate: bool
+    pending_update_count: int
+    ip_address: Optional[str] = None
+    last_error_date: Optional[datetime] = None
+    last_error_message: Optional[str] = None
+    max_connections: Optional[int] = None
+    allowed_updates: Union[list, str, None] = None
