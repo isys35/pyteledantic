@@ -802,7 +802,7 @@ class ChatMemberUpdated(BaseModel):
         ChatMemberOwner, ChatMemberAdministrator,
         ChatMemberMember, ChatMemberRestricted,
         ChatMemberLeft, ChatMemberBanned]
-    invite_link: ChatInviteLink
+    invite_link: Optional[ChatInviteLink]
 
 
 class Update(BaseModel):
