@@ -8,10 +8,10 @@ BASE_PATH = path.abspath(path.dirname(__file__))
 with open(path.join(BASE_PATH, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
-with open(path.join(BASE_PATH, 'VERSION')) as f:
+with open(path.join(BASE_PATH, 'VERSION'), encoding='utf-8') as f:
     version = f.read().strip()
 
-with open('requirements.txt') as f:
+with open('requirements.txt', encoding='utf-8') as f:
     required_packages = f.read().splitlines()
 
 setup(
