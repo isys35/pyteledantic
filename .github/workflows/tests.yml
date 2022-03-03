@@ -24,6 +24,7 @@ jobs:
         pip install -r requirements.txt
         pip install pytest
         pip install flake8
+        pip install mypy
         pip install coverage
         
     - name: Run Tests
@@ -33,6 +34,10 @@ jobs:
     - name: Run flake8
       run: |
         flake8 pyteledantic
+
+    - name: Run mypy
+      run: |
+        mypy pyteledantic
         
     - name: Run coverage
       run: |
