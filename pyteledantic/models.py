@@ -4,6 +4,13 @@ from typing import Optional, Union, List
 from pydantic import BaseModel, Field, validator
 
 
+class Bot(BaseModel):
+    """
+    Contains your bot token
+    """
+    token: str
+
+
 class User(BaseModel):
     """
     https://core.telegram.org/bots/api#user
