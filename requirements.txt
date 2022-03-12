@@ -3,4 +3,3 @@ typing-extensions==3.10.0.2
 types-requests==2.27.11
 types-urllib3==1.26.10
 requests==2.27.1
-requests-kerberos==0.14.0
