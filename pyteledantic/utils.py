@@ -1,5 +1,4 @@
 import urllib
-from requests_kerberos import HTTPKerberosAuth  # type: ignore
 from urllib3.util import parse_url
 import requests
 from requests.exceptions import ProxyError
@@ -7,6 +6,7 @@ from requests.exceptions import ProxyError
 
 class HTTPAdapterWithProxyKerberosAuth(requests.adapters.HTTPAdapter):
     def proxy_headers(self, proxy):
+        from requests_kerberos import HTTPKerberosAuth  # type: ignore
         headers = {}
         auth = HTTPKerberosAuth()
         negotiate_details = auth.generate_request_header(None,
