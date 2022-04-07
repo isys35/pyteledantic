@@ -1,6 +1,5 @@
 from typing import Optional, Union
 import urllib
-from pydantic import BaseModel
 from urllib3.util import parse_url
 import requests
 from requests.exceptions import ProxyError, SSLError
@@ -39,13 +38,12 @@ def proxy_handler(func):
     return wrapper
 
 
-
 @proxy_handler
 def base_method(
-    url:str,
-    response_model: Union[User, WebhookInfo],
-    session: Optional[requests.Session] = None, 
-    verify: bool = True) -> Union[User, WebhookInfo]:
+        url: str,
+        response_model: Union[User, WebhookInfo],
+        session: Optional[requests.Session] = None,
+        verify: bool = True) -> Union[User, WebhookInfo]:
     if not session:
         session = requests.Session()
     response = session.get(url, verify=verify)

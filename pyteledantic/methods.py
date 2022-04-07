@@ -1,13 +1,10 @@
 from pyteledantic.models import Bot, User, WebhookInfo
 from pyteledantic.utils import base_method
 
-from pyteledantic.utils import proxy_handler
-
 
 def get_me(bot: Bot) -> User:
     url = f'https://api.telegram.org/bot{bot.token}/getMe'
     return base_method(url, User)
-
 
 
 def get_webhook_info(bot: Bot) -> WebhookInfo:
