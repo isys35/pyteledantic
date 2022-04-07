@@ -8,7 +8,8 @@ jobs:
   deploy:
 
     runs-on: ubuntu-latest
-
+    env: 
+      TEST_BOT_TOKEN: ${{ secrets.TEST_BOT_TOKEN }}
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python
