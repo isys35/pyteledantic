@@ -16,7 +16,6 @@ jobs:
         python-version: '3.9'
     - name: Install dependencies
       run: |
-        export TEST_BOT_TOKEN='${{ secrets.TEST_BOT_TOKEN }}'
         python -m pip install --upgrade pip
         python -m pip install wheel
         python -m pip install twine
