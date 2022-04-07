@@ -1,11 +1,11 @@
-from typing import Optional, Union
+from typing import Optional
 import urllib
+from pydantic import BaseModel
 from urllib3.util import parse_url
 import requests
 from requests.exceptions import ProxyError, SSLError
 
 from pyteledantic.exceptions.exceptions import TelegramAPIException
-from pyteledantic.models import User, WebhookInfo
 
 
 class HTTPAdapterWithProxyKerberosAuth(requests.adapters.HTTPAdapter):
@@ -41,9 +41,9 @@ def proxy_handler(func):
 @proxy_handler
 def base_method(
         url: str,
-        response_model: Union[User, WebhookInfo],
+        response_model: type[BaseModel],
         session: Optional[requests.Session] = None,
-        verify: bool = True) -> Union[User, WebhookInfo]:
+        verify: bool = True) -> BaseModel:
     if not session:
         session = requests.Session()
     response = session.get(url, verify=verify)
