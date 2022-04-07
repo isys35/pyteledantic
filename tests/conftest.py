@@ -4,6 +4,8 @@ import pathlib
 
 import pytest as pytest
 
+from pyteledantic.models import Bot, User, WebhookInfo
+
 MOCK_DIR = os.path.join(pathlib.Path(__file__).parent, 'mocks')
 
 
@@ -26,3 +28,22 @@ def location_json():
     with open(os.path.join(MOCK_DIR, 'location.json')) as json_file:
         user_data = json.load(json_file)
     return user_data
+
+
+@pytest.fixture
+def bot():
+    token = os.environ.get('TEST_BOT_TOKEN')
+    return Bot(token=token)
+
+
+@pytest.fixture
+def bot_as_user():
+    user = User(id=1773461202, is_bot=True, first_name='testing_bot', last_name=None, username='testing123212bot',
+                language_code=None, can_join_groups=True, can_read_all_group_messages=False, supports_inline_queries=False)
+    return user
+
+
+@pytest.fixture
+def webhook_false():
+    return WebhookInfo(url='', has_custom_certificate=False, pending_update_count=0, ip_address=None,
+                       last_error_date=None, last_error_message=None, max_connections=None, allowed_updates=None)

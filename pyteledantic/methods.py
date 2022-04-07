@@ -1,13 +1,14 @@
-from pyteledantic.exceptions.exceptions import TelegramAPIException
-from pyteledantic.models import Bot, User
-import requests
+from pyteledantic.models import Bot, User, WebhookInfo
+from pyteledantic.utils import base_method
+
 
 
 def get_me(bot: Bot) -> User:
-    response = requests.get(f'https://api.telegram.org/bot{bot.token}/getMe')
-    if response.status_code == 200:
-        user = User(**response.json()['result'])
-        return user
-    else:
-        description = response.json()['description']
-        raise TelegramAPIException(description)
+    url = f'https://api.telegram.org/bot{bot.token}/getMe'
+    return base_method(url, User)
+
+
+
+def get_webhook_info(bot: Bot) -> WebhookInfo:
+    url = f'https://api.telegram.org/bot{bot.token}/getWebhookInfo'
+    return base_method(url, WebhookInfo)
