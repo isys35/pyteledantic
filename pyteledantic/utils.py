@@ -1,7 +1,11 @@
+from typing import Optional
 import urllib
+from pydantic import BaseModel
 from urllib3.util import parse_url
 import requests
-from requests.exceptions import ProxyError
+from requests.exceptions import ProxyError, SSLError
+
+from pyteledantic.exceptions.exceptions import TelegramAPIException
 
 
 class HTTPAdapterWithProxyKerberosAuth(requests.adapters.HTTPAdapter):
@@ -26,6 +30,26 @@ def proxy_handler(func):
             session.mount('https://', HTTPAdapterWithProxyKerberosAuth())
             verify = False
             result = func(*args, session=session, verify=verify, **kwargs)
+        except SSLError:
+            verify = False
+            result = func(*args, verify=verify, **kwargs)
         return result
 
     return wrapper
+
+
+@proxy_handler
+def base_method(
+        url: str,
+        response_model: type[BaseModel],
+        session: Optional[requests.Session] = None,
+        verify: bool = True) -> BaseModel:
+    if not session:
+        session = requests.Session()
+    response = session.get(url, verify=verify)
+    if response.status_code == 200:
+        resppone_pydantic = response_model(**response.json()['result'])
+        return resppone_pydantic
+    else:
+        description = response.json()['description']
+        raise TelegramAPIException(description)
