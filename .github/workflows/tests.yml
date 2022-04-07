@@ -20,7 +20,6 @@ jobs:
 
     - name: Install dependencies
       run: |
-        export TEST_BOT_TOKEN='${{ secrets.TEST_BOT_TOKEN }}'
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install pytest
@@ -30,6 +29,7 @@ jobs:
         
     - name: Run Tests
       run: |
+        export TEST_BOT_TOKEN='${{ secrets.TEST_BOT_TOKEN }}'
         pytest tests
         
     - name: Run flake8
