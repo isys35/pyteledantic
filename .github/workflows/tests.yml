@@ -21,7 +21,8 @@ jobs:
         TEST_BOT_TOKEN: ${{ secrets.TEST_BOT_TOKEN }}
     - name: Install dependencies
       run: |
-        echo 'hi  ${{ secrets.TEST_BOT_TOKEN }}'
+        export TEST_BOT_TOKEN='${{ secrets.TEST_BOT_TOKEN }}'
+        echo 'hi ${{ env.TEST_BOT_TOKEN }}'
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install pytest
