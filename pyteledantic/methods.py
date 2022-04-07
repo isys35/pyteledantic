@@ -1,6 +1,7 @@
 from pyteledantic.models import Bot, User, WebhookInfo
 from pyteledantic.utils import base_method
 
+from pyteledantic.utils import proxy_handler
 
 
 def get_me(bot: Bot) -> User:
