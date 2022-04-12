@@ -10,3 +10,13 @@ def get_me(bot: Bot) -> User:
 def get_webhook_info(bot: Bot) -> WebhookInfo:
     url = f'https://api.telegram.org/bot{bot.token}/getWebhookInfo'
     return base_method(url, WebhookInfo)
+
+
+def set_webhook(bot: Bot, webhook_url: str) -> bool:
+    url = f'https://api.telegram.org/bot{bot.token}/setWebhook?url={webhook_url}'
+    return base_method(url)
+
+
+def delete_webhook(bot: Bot) -> bool:
+    url = f'https://api.telegram.org/bot{bot.token}/deleteWebhook'
+    return base_method(url)

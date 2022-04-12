@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Union
 import urllib
 from pydantic import BaseModel
 from urllib3.util import parse_url
@@ -41,15 +41,18 @@ def proxy_handler(func):
 @proxy_handler
 def base_method(
         url: str,
-        response_model: type[BaseModel],
+        response_model: Optional[type[BaseModel]] = None,
         session: Optional[requests.Session] = None,
-        verify: bool = True) -> BaseModel:
+        verify: bool = True) -> Union[BaseModel, bool]:
     if not session:
         session = requests.Session()
     response = session.get(url, verify=verify)
     if response.status_code == 200:
-        resppone_pydantic = response_model(**response.json()['result'])
-        return resppone_pydantic
+        if response_model:
+            resppone_pydantic = response_model(**response.json()['result'])
+            return resppone_pydantic
+        else:
+            return response.json()['result']
     else:
         description = response.json()['description']
         raise TelegramAPIException(description)
