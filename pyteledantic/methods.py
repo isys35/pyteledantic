@@ -13,7 +13,8 @@ def get_webhook_info(bot: Bot) -> WebhookInfo:
 
 
 def set_webhook(bot: Bot, webhook_url: str) -> bool:
-    url = f'https://api.telegram.org/bot{bot.token}/setWebhook?url={webhook_url}'
+    url = 'https://api.telegram.org/bot{}/setWebhook?url={}'
+    url = url.format(bot.token, webhook_url)
     return base_method(url)
 
 

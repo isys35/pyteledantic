@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Any, Optional, Union, List
+from typing import Optional, Union, List
 
 from pydantic import BaseModel, Field, validator
 
