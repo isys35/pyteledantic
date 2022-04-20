@@ -25,4 +25,7 @@ def delete_webhook(bot: Bot) -> bool:
 
 def send_message(bot: Bot, message: MessageToSend) -> Message:
     url = f'https://api.telegram.org/bot{bot.token}/sendMessage'
-    return base_method(url, method='POST', params=message.dict(), response_model=Message)
+    return base_method(url,
+                       method='POST',
+                       params=message.dict(),
+                       response_model=Message)
