@@ -1,6 +1,5 @@
 from datetime import datetime
 from typing import Optional, Union, List
-
 from pydantic import BaseModel, Field, validator
 
 
@@ -529,6 +528,58 @@ class InlineKeyboardButton(BaseModel):
     pay: Optional[bool]
 
 
+class ForceReply(BaseModel):
+    """
+    https://core.telegram.org/bots/api#forcereply
+    Upon receiving a message with this object,
+    Telegram clients will display a reply interface to the user
+    (act as if the user has selected the bot's message and tapped 'Reply')
+    """
+    force_reply: bool = True
+    input_field_placeholder: Optional[str]
+    selective: Optional[bool]
+
+
+class ReplyKeyboardRemove(BaseModel):
+    """
+    https://core.telegram.org/bots/api#replykeyboardremove
+    Upon receiving a message with this object, Telegram clients
+    will remove the current custom keyboard and display
+    the default letter-keyboard.
+    """
+    remove_keyboard: bool = True
+    selective: Optional[bool]
+
+
+class KeyboardButtonPollType(BaseModel):
+    """
+    https://core.telegram.org/bots/api#keyboardbuttonpolltype
+    This object represents type of a poll, which is allowed to be
+    created and sent when the corresponding button is pressed.
+    """
+    type: Optional[str] = None
+
+
+class WebAppInfo(BaseModel):
+    """
+    https://core.telegram.org/bots/api#webappinfo
+    Contains information about a Web App.
+    """
+    url: Optional[str] = None
+
+
+class KeyboardButton(BaseModel):
+    """
+    https://core.telegram.org/bots/api#keyboardbutton
+    This object represents one button of the reply keyboard.
+    """
+    text: str
+    request_contact: Optional[bool]
+    request_location: Optional[bool]
+    request_poll: Optional[KeyboardButtonPollType]
+    web_app: Optional[WebAppInfo]
+
+
 class InlineKeyboardMarkup(BaseModel):
     """
     https://core.telegram.org/bots/api#inlinekeyboardmarkup
@@ -536,6 +587,36 @@ class InlineKeyboardMarkup(BaseModel):
     right next to the message it belongs to.
     """
     inline_keyboard: Union[list, List[InlineKeyboardButton]]
+
+
+class ReplyKeyboardMarkup(BaseModel):
+    """
+    https://core.telegram.org/bots/api#replykeyboardmarkup
+    This object represents a custom keyboard with reply options
+    """
+    keyboard: Union[list, List[KeyboardButton]]
+    resize_keyboard: Optional[bool]
+    one_time_keyboard: Optional[bool]
+    input_field_placeholder: Optional[str]
+    selective: Optional[bool]
+
+
+class MessageToSend(BaseModel):
+    """
+    https://core.telegram.org/bots/api#sendmessage
+    Message data to use sendMessage method
+    """
+    chat_id: Union[str, int]
+    text: str
+    parse_mode: Optional[str] = None
+    entities: Union[list, MessageEntity, None] = None
+    disable_web_page_preview: Optional[bool] = None
+    disable_notification: Optional[bool] = None
+    protect_content: Optional[bool] = None
+    reply_to_message_id: Optional[int] = None
+    allow_sending_without_reply: Optional[bool] = None
+    reply_markup: Union[InlineKeyboardMarkup, ReplyKeyboardMarkup,
+                        ReplyKeyboardRemove, ForceReply, None] = None
 
 
 class Message(BaseModel):
