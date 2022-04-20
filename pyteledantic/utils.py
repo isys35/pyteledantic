@@ -41,12 +41,14 @@ def proxy_handler(func):
 @proxy_handler
 def base_method(
         url: str,
+        method: str = 'GET',
+        params: Optional[dict] = None,
         response_model: Optional[type[BaseModel]] = None,
         session: Optional[requests.Session] = None,
         verify: bool = True) -> Union[BaseModel, bool]:
     if not session:
         session = requests.Session()
-    response = session.get(url, verify=verify)
+    response = session.request(method, url, params=params, verify=verify)
     if response.status_code == 200:
         if response_model:
             resppone_pydantic = response_model(**response.json()['result'])
