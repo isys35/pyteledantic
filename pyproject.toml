@@ -1,0 +1,64 @@
+[tool.poetry]
+name = "pyteledantic"
+version = "0.0.16"
+description = "Pydantic models for Telegram Bot API"
+authors = ["isys35 <isys35@mail.ru>"]
+license = "Apache-2.0 license"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+requests = "^2.27.1"
+pydantic = "^1.9.1"
+
+[tool.poetry.dev-dependencies]
+commitizen = "^2.27.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.commitizen]
+name = "cz_customize"
+version = "0.0.16"
+version_files = [
+    "__version__.py",
+    "pyproject.toml:version"
+]
+
+[tool.commitizen.customize]
+message_template = "{% if break %}🔥{% endif %}{{change_type}}:{% if show_message %} {{message}}{% endif %}"
+example = "feature: this feature enable customize through config file"
+schema = "<type>: <body>"
+schema_pattern = "^(🔥?(👨‍💻 FEAT|🐞 FIX|🛠 REFACTOR|🔨 TEST|📚 DOCS)):(\\s.*)"
+bump_pattern = "^(🔥?(👨‍💻 FEAT|🐞 FIX|🛠 REFACTOR|🔨 TEST|📚 DOCS))"
+bump_map = {"🔥" = "MAJOR", "👨‍💻 FEAT" = "MINOR", "🐞 FIX" = "PATCH", "🛠 REFACTOR" = "PATCH", "🔨 TEST" = "PATCH", "📚 DOCS" = "PATCH"}
+change_type_order = ["🔥", "👨‍💻 FEAT", "🐞 FIX", "🛠 REFACTOR", "🔨 TEST", "📚 DOCS"]
+info_path = "cz_customize_info.txt"
+info = """
+This is customized info
+"""
+commit_parser = "^(?P<change_type>feature|bug fix):\\s(?P<message>.*)?"
+changelog_pattern = "^(feature|bug fix)?(!)?"
+change_type_map = {"feature" = "Feat", "bug fix" = "Fix"}
+
+[[tool.commitizen.customize.questions]]
+type = "list"
+name = "change_type"
+choices = ["👨‍💻 FEAT", "🐞 FIX", "🛠 REFACTOR", "🔨 TEST", "📚 DOCS"]
+message = "Select the type of change you are committing"
+
+[[tool.commitizen.customize.questions]]
+type = "input"
+name = "message"
+message = "Body message. "
+
+[[tool.commitizen.customize.questions]]
+type = "confirm"
+name = "show_message"
+message = "Do you want to add body message in commit?"
+
+
+[[tool.commitizen.customize.questions]]
+type = "confirm"
+name = "break"
+message = "It is a BREACKING CHANGE?"
