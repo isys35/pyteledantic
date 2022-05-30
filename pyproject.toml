@@ -9,6 +9,7 @@ license = "Apache-2.0 license"
 python = "^3.9"
 requests = "^2.27.1"
 pydantic = "^1.9.1"
+pytest = "^7.1.2"
 
 [tool.poetry.dev-dependencies]
 commitizen = "^2.27.1"
