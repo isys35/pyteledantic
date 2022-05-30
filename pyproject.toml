@@ -10,6 +10,8 @@ python = "^3.9"
 requests = "^2.27.1"
 pydantic = "^1.9.1"
 pytest = "^7.1.2"
+mypy = "^0.960"
+types-requests = "^2.27.29"
 
 [tool.poetry.dev-dependencies]
 commitizen = "^2.27.1"
