@@ -39,3 +39,5 @@ def send_message(bot: Bot, message: MessageToSend) -> Message:
                       response_model=Message)
     assert isinstance(msg, Message)
     return msg
+
+

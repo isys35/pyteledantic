@@ -928,3 +928,124 @@ class WebhookInfo(BaseModel):
     last_error_message: Optional[str] = None
     max_connections: Optional[int] = None
     allowed_updates: Union[list, str, None] = None
+
+
+class ForwardMessage(BaseModel):
+    """
+    https://core.telegram.org/bots/api#forwardmessage
+    data to use forwardMessage method
+    """
+    chat_id: Union[int, str]
+    from_chat_id: Union[int, str]
+    disable_notification: Optional[bool] = None
+    protect_content: Optional[bool] = None
+    message_id: Optional[int] = None
+
+
+class CopyMessage(BaseModel):
+    """
+    https://core.telegram.org/bots/api#copymessage
+    data to use copyMessage method
+    """
+
+    chat_id: Union[int, str]
+    from_chat_id: Union[int, str]
+    message_id: int
+    caption: Optional[str] = None
+    parse_mode: Optional[str] = None
+    caption_entities: Union[list, MessageEntity, None] = None
+
+
+class SendPhoto(BaseModel):
+    """
+    https://core.telegram.org/bots/api#sendphoto
+    data to use sendPhoto method
+    """
+    chat_id: Union[int, str]
+    photo: Union[bytes, str]
+    caption: Optional[str] = None
+    parse_mode: Optional[str] = None
+    caption_entities: Union[list, MessageEntity, None] = None
+    disable_notification: Optional[bool] = None
+    protect_content: Optional[bool] = None
+    reply_to_message_id: Optional[int] = None
+    allow_sending_without_reply: Optional[bool] = None
+    reply_markup: Union[InlineKeyboardMarkup,
+                        ReplyKeyboardMarkup,
+                        ReplyKeyboardRemove,
+                        ForceReply,
+                        None] = None
+
+
+class SendAudio(BaseModel):
+    """
+    https://core.telegram.org/bots/api#sendaudio
+    data to use sendAudio method
+    """
+    chat_id: Union[int, str]
+    audio: Union[bytes, str]
+    caption: Optional[str] = None
+    parse_mode: Optional[str] = None
+    caption_entities: Union[list, MessageEntity, None] = None
+    duration: Optional[int] = None
+    performer: Optional[str] = None
+    title: Optional[str] = None
+    thumb: Union[bytes, str, None] = None
+    disable_notification: Optional[bool] = None
+    protect_content: Optional[bool] = None
+    reply_to_message_id: Optional[int] = None
+    allow_sending_without_reply: Optional[bool] = None
+    reply_markup: Union[InlineKeyboardMarkup,
+                        ReplyKeyboardMarkup,
+                        ReplyKeyboardRemove,
+                        ForceReply,
+                        None] = None
+
+
+class SendDocument(BaseModel):
+    """
+    https://core.telegram.org/bots/api#senddocument
+    data to use sendDocument method
+    """
+    chat_id: Union[int, str]
+    document: Union[bytes, str]
+    thumb: Union[bytes, str, None] = None
+    caption: Optional[str] = None
+    parse_mode: Optional[str] = None
+    caption_entities: Union[list, MessageEntity, None] = None
+    disable_content_type_detection: Optional[bool] = None
+    disable_notification: Optional[bool] = None
+    protect_content: Optional[bool] = None
+    reply_to_message_id: Optional[int] = None
+    allow_sending_without_reply: Optional[bool] = None
+    reply_markup: Union[InlineKeyboardMarkup,
+                        ReplyKeyboardMarkup,
+                        ReplyKeyboardRemove,
+                        ForceReply,
+                        None] = None
+
+
+class SendVideo(BaseModel):
+    """
+    https://core.telegram.org/bots/api#sendvideo
+    data to use sendVideomethod
+    """
+    chat_id: Union[int, str]
+    video: Union[bytes, str]
+    duration: Optional[int] = None
+    width: Optional[int] = None
+    height: Optional[int] = None
+    thumb: Union[bytes, str, None] = None
+    caption: Optional[str] = None
+    parse_mode: Optional[str] = None
+    caption_entities: Union[list, MessageEntity, None] = None
+    supports_streaming: Optional[bool] = None
+    disable_notification: Optional[bool] = None
+    protect_content: Optional[bool] = None
+    reply_to_message_id: Optional[int] = None
+    allow_sending_without_reply: Optional[bool] = None
+    reply_markup: Union[InlineKeyboardMarkup,
+                        ReplyKeyboardMarkup,
+                        ReplyKeyboardRemove,
+                        ForceReply,
+                        None] = None
