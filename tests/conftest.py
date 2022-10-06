@@ -1,4 +1,3 @@
-from cgitb import text
 import json
 import os
 import pathlib

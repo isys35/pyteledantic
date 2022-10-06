@@ -2,14 +2,12 @@ from os import path
 
 import setuptools
 from setuptools import setup
+from __version__ import version
 
 BASE_PATH = path.abspath(path.dirname(__file__))
 
 with open(path.join(BASE_PATH, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
-
-with open(path.join(BASE_PATH, 'VERSION'), encoding='utf-8') as f:
-    version = f.read().strip()
 
 with open('requirements.txt', encoding='utf-8') as f:
     required_packages = f.read().splitlines()
